@@ -1,27 +1,46 @@
+## Repo behind the website [bowen.today](http://bowen.today)
 
-## Repo behind the website bowen.today
-
-Thanks for stopping by. 
+Thanks for stopping by.
 
 ### Contents
+
 /lib/next-ferry - library to get back ferry data. Ferry API
-/lib/pages - Simple pages 
-/lib/simplehtmldom - https://simplehtmldom.sourceforge.io/ 
+
+/lib/pages - Simple pages
+
+/lib/simplehtmldom - [PHP Simple HTML DOM Parser](https://simplehtmldom.sourceforge.io/)
 
 ### Local development.
+
 To start the server for local development.
+
 ```
 cd public
 php -S localhost:8000
 ```
 
-then visit 
-http://localhost:8000/
+then visit
+[localhost:8000](http://localhost:8000/)
 
+### Sass Basics.
 
-Todo
-[ ] Create a new Google Assistant Skill api.
+The watch flag tells Sass to watch style.scss, and re-compile CSS each time you save your Sass.
 
+Open this in a separete terminal window.
 
-Icons and colours from 
-https://primer.style/octicons/
+```
+cd public
+sass --watch style.scss style.css
+```
+
+## Todo
+
+- [ ] Create a new Google Assistant Skill api.
+- [ ] Styles and Design/UI/UX
+- [ ] Add SASS support
+  - [ ] Create SASS structure for vars, mixins, etc
+- [x] ~~Add .gitignore~~
+
+## Icons and colours from
+
+[Octicons](https://primer.style/octicons/)
