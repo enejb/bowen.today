@@ -1,122 +1,131 @@
 body {
-    background: #fafbfc;
-    margin: 0;
-    font-style: normal;
-    font-weight: 300;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background: #fafbfc;
+  margin: 0;
+  font-style: normal;
+  font-weight: 300;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
 h2 {
-    font-size: 28px;
-    margin: 0;
+  font-size: 28px;
+  margin: 0;
 }
+
 label {
-    text-transform: uppercase;
-    border-bottom: 1px solid #CCC;
-    padding-bottom: 5px;
-    display: block;
+  text-transform: uppercase;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 5px;
+  display: block;
 }
+
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-li {
-    list-style: none;
-    padding: 10px 0;
+ul li {
+  list-style: none;
+  padding: 10px 0;
 }
 
 .shell {
-    margin: 0 auto;
-    max-width: 800px;
-    background: #FFF;
-    padding: 30px;
+  margin: 0 auto;
+  max-width: 800px;
+  background: #ffffff;
+  padding: 30px;
 }
 
 .header {
-    background-color: #1b1f23;
-    color:#FFF;
+  background-color: #1b1f23;
+  color: #ffffff;
 }
-
-.header-shell {
-    margin: 0 auto;
-    max-width: 880px;
-    display: flex;
-    justify-content: space-between;
+.header .header-shell {
+  margin: 0 auto;
+  max-width: 880px;
+  display: flex;
+  justify-content: space-between;
 }
-
-.header a {
-    color:#FFF;
-    text-decoration: none;
-    padding: 10px 30px;
+.header .header-shell a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 30px;
 }
-
-.header a svg {
-    position: relative;
-    top: 2px;
-    fill: #FFF;
+.header .header-shell a svg {
+  position: relative;
+  top: 2px;
+  fill: #ffffff;
 }
 
 .next-ferry {
-    display: flex;
-    margin-bottom: 60px;
+  display: flex;
+  margin-bottom: 60px;
 }
 
 .route {
-    width: 50%;
+  width: 50%;
 }
+
 .time {
-    width: 50%;
-    text-align: right;
+  width: 50%;
+  text-align: right;
 }
+
 .to {
-    padding-bottom: 40px;
+  padding-bottom: 40px;
 }
+
 .map {
-    height: 200px;
-    overflow: hidden;
-    margin: -30px -30px 20px;
-    position: relative;
+  height: 200px;
+  overflow: hidden;
+  margin: -30px -30px 20px;
+  position: relative;
 }
 .map img {
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 }
 
 .link-button {
-    display: block;
-    padding: .75em 1.5em;
-    margin-bottom: 15px;
-    line-height: 1.5;
-    background-color: #fafbfc;
-    color: #1b1f23;
-    font-size: 32px;
-    text-decoration: none;
+  display: block;
+  padding: 0.75em 1.5em;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  background-color: #fafbfc;
+  color: #1b1f23;
+  font-size: 32px;
+  text-decoration: none;
+}
+.link-button svg {
+  height: 32px;
+  width: 32px;
+  position: relative;
+  top: 6px;
 }
 
-.link-button  svg {
-    height: 32px;
-    width: 32px;
-    position: relative;
-    top: 6px;
-}
 /* Mobile */
 @media only screen and (max-width: 600px) {
-    .shell {
-        padding: 20px;
-    }
-    .map {
-        margin: -20px -20px 20px;
-    }
-    .header a {
-        padding: 10px 20px;
-    }
-    .link-button {
-        font-size: 22px;
-    }
-    .link-button  svg {
-        height: 24px;
-        width: 24px;
-    }
+  .shell {
+    padding: 20px;
   }
+
+  .map {
+    margin: -20px -20px 20px;
+  }
+
+  .header a {
+    padding: 10px 20px;
+  }
+
+  .link-button {
+    font-size: 22px;
+  }
+
+  .link-button svg {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

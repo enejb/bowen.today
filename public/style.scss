@@ -1,0 +1,143 @@
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$primary-color: #ffffff;
+$secondary-color: #1b1f23;
+$background-color: #fafbfc;
+$border-color: #cccccc;
+
+body {
+  background: $background-color;
+  margin: 0;
+  font-style: normal;
+  font-weight: 300;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+h2 {
+  font-size: 28px;
+  margin: 0;
+}
+
+label {
+  text-transform: uppercase;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 5px;
+  display: block;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    padding: 10px 0;
+  }
+}
+
+.shell {
+  margin: 0 auto;
+  max-width: 800px;
+  background: $primary-color;
+  padding: 30px;
+}
+
+.header {
+  background-color: $secondary-color;
+  color: $primary-color;
+
+  .header-shell {
+    margin: 0 auto;
+    max-width: 880px;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      padding: 10px 30px;
+
+      svg {
+        position: relative;
+        top: 2px;
+        fill: $primary-color;
+      }
+    }
+  }
+}
+
+.next-ferry {
+  display: flex;
+  margin-bottom: 60px;
+}
+
+.route {
+  width: 50%;
+}
+
+.time {
+  width: 50%;
+  text-align: right;
+}
+
+.to {
+  padding-bottom: 40px;
+}
+
+.map {
+  height: 200px;
+  overflow: hidden;
+  margin: -30px -30px 20px;
+  position: relative;
+
+  img {
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+}
+
+.link-button {
+  display: block;
+  padding: 0.75em 1.5em;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  background-color: $background-color;
+  color: $secondary-color;
+  font-size: 32px;
+  text-decoration: none;
+
+  svg {
+    height: 32px;
+    width: 32px;
+    position: relative;
+    top: 6px;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+  .shell {
+    padding: 20px;
+  }
+
+  .map {
+    margin: -20px -20px 20px;
+  }
+
+  .header a {
+    padding: 10px 20px;
+  }
+
+  .link-button {
+    font-size: 22px;
+  }
+
+  .link-button svg {
+    height: 24px;
+    width: 24px;
+  }
+}
