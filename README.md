@@ -53,6 +53,7 @@ sass --watch style.scss style.css
   - [ ] [Vessel Finder premium API](https://api.vesselfinder.com/docs/)
   - [ ] [BC Ferries 2014 Python API](http://yasyf.github.io/bcferries/)
   - [ ] [Canada Data Catalogue](https://catalogue.data.gov.bc.ca/dataset?tags=route)
+- [ ] Implement separtion for Departures Today/Next Day `./ferry/index.php`
 - [x] ~~Provide a more human readable time.~~
 - [x] ~~Make it work with timezones. (Test that part out)~~
 - [x] ~~Make it work for the other direction. (Vancouver to Bowen)~~
