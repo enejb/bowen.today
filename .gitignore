@@ -8,3 +8,6 @@
 ehthumbs.db
 Thumbs.db
 .vscode*
+
+# Secrets are kept here.
+secrets.php

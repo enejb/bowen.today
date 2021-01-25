@@ -3,6 +3,9 @@
 
 // ini_set( 'display_errors', '1' );
 // ini_set( 'display_startup_errors', '1' );
+if ( file_exists( '../secrets.php' ) ) {
+    require_once '../secrets.php';
+}
 
 define( 'LIB_PATH', realpath ( dirname( __FILE__ ) . '/../lib' ) );
 

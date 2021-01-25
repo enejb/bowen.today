@@ -67,3 +67,10 @@ sass --watch style.scss style.css
 ## Icons and colours from
 
 [Octicons](https://primer.style/octicons/)
+
+## Secrets
+
+Rename secrets.example.php to secrets.php
+```
+cp secrets.example.php secrets.php
+```
