@@ -263,7 +263,7 @@ class Route {
     /**
      * A helpful function that takes a timestamp and formats in the correct timezone.
      */
-    private function _date( $format="r", $timestamp=false, $timezone=false ) {
+    private function _date( $format = "r", $timestamp = false, $timezone = false ) {
         $userTimezone = new \DateTimeZone( !empty( $timezone ) ? $timezone : 'GMT' );
         $gmtTimezone = new \DateTimeZone( 'GMT' );
         $myDateTime = new \DateTime( ( $timestamp != false ? date( "r", (int) $timestamp) : date("r") ), $gmtTimezone );
