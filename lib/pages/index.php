@@ -90,3 +90,8 @@ function default_args( $args, $default ) {
 function page_home() {
     require_once PAGES_DIR . '/home/index.php';
 }
+
+function page_weather() {
+    require_once LIB_PATH . '/weather/index.php';
+    require_once PAGES_DIR . '/weather/index.php';
+}

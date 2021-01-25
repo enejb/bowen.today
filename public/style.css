@@ -6,6 +6,15 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+h1 {
+  font-size: 42px;
+  margin-bottom: 0;
+}
+
+.main-title {
+  font-weight: normal;
+}
+
 h2 {
   font-size: 28px;
   margin: 0;
@@ -32,6 +41,14 @@ ul li {
   max-width: 800px;
   background: #ffffff;
   padding: 30px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-image {
+  margin-top: 16px;
 }
 
 .header {

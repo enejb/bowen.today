@@ -31,6 +31,9 @@ switch ( $exploded_path[0] ) {
     case "ferry":
         page_ferry( $exploded_path );
         die();
+    case 'weather':
+        page_weather();
+        die();
     case 'home':
         page_home();
         die();
