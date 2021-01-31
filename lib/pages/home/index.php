@@ -10,6 +10,10 @@ $arrow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16"
         <h3>Ferry Schedule</h3>
         <a href="/ferry/bowen-vancouver" class="link-button" >Bowen <?php echo $arrow; ?> Vancouver</a>
         <a href="/ferry/vancouver-bowen" class="link-button">Vancouver <?php echo $arrow; ?> Bowen</a>
+
+        <h3>Weather</h3>
+        <a href="/weather" class="link-button">Current </a>
+
     </div>
 <?php 
 require_once PAGES_DIR . '/templates/footer.php';
