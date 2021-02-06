@@ -10,7 +10,7 @@ Thanks for stopping by.
 
 /lib/simplehtmldom - [PHP Simple HTML DOM Parser](https://simplehtmldom.sourceforge.io/)
 
-#### [API Returns](http://bowen.today/api/v1)
+#### [API Returns](http://bowen.today/api/v1/ferry)
 
 - `to:`
 - `from:`
@@ -19,6 +19,13 @@ Thanks for stopping by.
 - `next_sailings: [timestamp]`
 - `current_capacity: %`
 - `has_current_capacity: available (bool)`
+
+
+http://bowen.today/api/v1/ferry/vancouver-bowen
+http://bowen.today/api/v1/ferry/bowen-vancouver
+
+You can also pass in a specific future date to get the schedule from the future.
+http://bowen.today/api/v1/ferry/bowen-vancouver/2021-02-22
 
 ### Local development.
 
