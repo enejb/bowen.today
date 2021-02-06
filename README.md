@@ -21,10 +21,10 @@ Thanks for stopping by.
 - `has_current_capacity: available (bool)`
 
 
-http://bowen.today/api/v1/ferry/vancouver-bowen
+http://bowen.today/api/v1/ferry/vancouver-bowen \
 http://bowen.today/api/v1/ferry/bowen-vancouver
 
-You can also pass in a specific future date to get the schedule from the future.
+You can also pass in a specific future date to get the schedule from the future. \
 http://bowen.today/api/v1/ferry/bowen-vancouver/2021-02-22
 
 ### Local development.
