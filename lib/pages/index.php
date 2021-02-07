@@ -119,3 +119,8 @@ function page_weather() {
     require_once LIB_PATH . '/weather/index.php';
     require_once PAGES_DIR . '/weather/index.php';
 }
+
+function page_tide() {
+    require_once LIB_PATH . '/weather/tide.php';
+    require_once PAGES_DIR . '/tide/index.php';
+}

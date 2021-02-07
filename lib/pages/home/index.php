@@ -11,8 +11,9 @@ $arrow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16"
         <a href="/ferry/bowen-vancouver" class="link-button" >Bowen <?php echo $arrow; ?> Vancouver</a>
         <a href="/ferry/vancouver-bowen" class="link-button">Vancouver <?php echo $arrow; ?> Bowen</a>
 
-        <h3>Weather</h3>
-        <a href="/weather" class="link-button">Current </a>
+        <h3>Current Conditions</h3>
+        <a href="/weather" class="link-button">Weather</a>
+        <a href="/tide" class="link-button">Tide</a>
 
     </div>
 <?php 

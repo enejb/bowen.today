@@ -34,10 +34,12 @@ switch ( $exploded_path[0] ) {
     case 'weather':
         page_weather();
         die();
+    case 'tide':
+        page_tide();
+        die();
     case 'home':
         page_home();
         die();
     default:
         page_404();
-
 }
