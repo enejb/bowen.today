@@ -7,4 +7,5 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
   <link rel="stylesheet" href="/style.css">
 </head>
+<!-- If you are reading this checkout the project at github.com/enejb/bowen.today -->
 <body>

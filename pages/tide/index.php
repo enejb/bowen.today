@@ -24,6 +24,17 @@ function get_relative_width( $height, $max, $min ) {
     <div>
         <div class="to">last tide:<h2><?php echo $tide_info->get_previous_tide()['type']; ?> tide - <?php echo $tide_info->get_previous_tide()['height']; ?>m</h2>
         </div>
+        <div class="to">current tide: <h2>
+        <?php 
+            echo $tide_info->get_current_height( 
+                $tide_info->get_previous_tide()['height'],
+                $tide_info->get_next_tide()['height'],
+                $tide_info->get_previous_tide()['time']->format( 'U' ),
+                $tide_info->get_next_tide()['time']->format( 'U' ) 
+                ); ?>m
+                and <?php echo $tide_info->get_current_movement( $tide_info->get_previous_tide()['height'], $tide_info->get_next_tide()['height'] ); ?>
+                </h2>
+        </div>
         <div class="to">next tide: <h2><?php echo $tide_info->get_next_tide()['type']; ?> tide - <?php echo $tide_info->get_next_tide()['height']; ?>m</h2>
         </div>
     </div>
