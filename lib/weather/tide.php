@@ -48,18 +48,18 @@ class Current_Tide {
             $this->next_tide = $tide_entry;
           }
 
-          if ( $this->min_tide === null || $this->min_tide < $tide_entry['height'] ) {
+          if ( $this->min_tide === null || $this->min_tide > $tide_entry['height'] ) {
             $this->min_tide = $tide_entry['height'];
           }
 
-          if ( $this->max_tide === null || $this->max_tide > $tide_entry['height'] ) {
+          if ( $this->max_tide === null || $this->max_tide < $tide_entry['height'] ) {
             $this->max_tide = $tide_entry['height'];
           } 
 
           $previous_entry = $tide_entry;
           $this->enties[] = $tide_entry;
       }
-
+      
       // Back fill the first entry.
       $this->enties[0]['type'] = $this->enties[1]['type'] == 'high' ? 'low' : 'high';
 

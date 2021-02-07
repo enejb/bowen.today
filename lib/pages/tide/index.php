@@ -6,8 +6,8 @@ require_once PAGES_DIR . '/templates/header.php';
 
 $tide_info = get_current_bowen_tide();
 
-function get_relative_width( $height ) {
-    echo ( $height * 80 ) . 'px';
+function get_relative_width( $height, $max, $min ) {
+    echo ( ($height / $max) * 100 ) . '%';
 }
 
 ?>
@@ -21,21 +21,17 @@ function get_relative_width( $height ) {
     </div>
 </div>
     <div class="shell">
-    <div class="next-ferry">
-        <div class="route">
-            <div class="to">last tide:<h2><?php echo $tide_info->get_previous_tide()['type']; ?> tide - <?php echo $tide_info->get_previous_tide()['height']; ?>m</h2>
-            </div>
-            <div class="from">next tide: <h2><?php echo $tide_info->get_next_tide()['type']; ?> tide - <?php echo $tide_info->get_next_tide()['height']; ?>m</h2>
-            </div>
+    <div>
+        <div class="to">last tide:<h2><?php echo $tide_info->get_previous_tide()['type']; ?> tide - <?php echo $tide_info->get_previous_tide()['height']; ?>m</h2>
         </div>
-        <div class="time">            
+        <div class="to">next tide: <h2><?php echo $tide_info->get_next_tide()['type']; ?> tide - <?php echo $tide_info->get_next_tide()['height']; ?>m</h2>
         </div>
     </div>
 
     <ul>
         <?php foreach( $tide_info->get_tide_entries() as $tide ) { ?>
         <li style="position: relative;" >
-        <div style="width: <?php get_relative_width( $tide['height'] ); ?>; background: #EEE; height: 40px; position: absolute; z-index: 1;"></div>
+        <div style="width: <?php get_relative_width( $tide['height'], $tide_info->get_max_tide(), $tide_info->get_min_tide() ); ?>; background: #EEE; height: 40px; position: absolute; z-index: 1;"></div>
         <div class="flex space-between" style="z-index: 2; position: relative; height: 25px; padding-top: 10px;">
             <div style="padding-left: 15px;"><?php echo $tide['type']; ?> tide</div>
             <div><?php echo $tide['height']; ?>m</div>
