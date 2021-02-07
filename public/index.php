@@ -9,7 +9,7 @@ if ( file_exists( '../secrets.php' ) ) {
 
 define( 'LIB_PATH', realpath ( dirname( __FILE__ ) . '/../lib' ) );
 
-require_once LIB_PATH . '/pages/index.php';
+require_once '../pages/index.php';
 
 // Take the server path and
 $path = ( isset( $_GET['path'] ) ?

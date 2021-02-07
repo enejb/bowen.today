@@ -1,4 +1,7 @@
 <?php
+
+require_once LIB_PATH . '/utils/time/index.php';
+
 /**
  * A librarie that returns bowen weather.
  *
@@ -37,9 +40,10 @@ class Current_Tide {
           $date_time = DateTime::createFromFormat( 'Y-m-d\TH:i:s e', $entry->time .' PST' );
 
           $tide_entry = [
-            'time'   => $date_time,
-            'height' => $entry->height_m,
-            'type'   => $this->get_tide_type( $entry->height_m , $previous_entry ),
+            'time'          => $date_time,
+            'height'        => $entry->height_m,
+            'type'          => $this->get_tide_type( $entry->height_m , $previous_entry ),
+            'different_day' => $this->is_different_date( $date_time->format( 'U' ), $previous_entry ),
           ];
 
           if ( $tide_entry[ 'time' ]->format( 'U' ) < $now ) {
@@ -67,7 +71,15 @@ class Current_Tide {
       if ( $this->enties[0]['time']->format( 'U' ) == $this->previous_tide['time']->format( 'U' ) ) {
         $this->previous_tide['type'] = $this->enties[0]['type'];
       }
-      
+    }
+
+    private function is_different_date( $current_time, $previous_entry ) {
+      // return false
+      if ( empty( $previous_entry ) ) {
+        return false;
+      }
+
+      return ! is_same_day( $current_time, $previous_entry['time']->format( 'U' ) );
     }
 
     private function get_tide_type( $height, $previous_entry ) {

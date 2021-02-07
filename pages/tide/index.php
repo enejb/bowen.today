@@ -27,10 +27,13 @@ function get_relative_width( $height, $max, $min ) {
         <div class="to">next tide: <h2><?php echo $tide_info->get_next_tide()['type']; ?> tide - <?php echo $tide_info->get_next_tide()['height']; ?>m</h2>
         </div>
     </div>
-
+    <label>Today</label> 
     <ul>
         <?php foreach( $tide_info->get_tide_entries() as $tide ) { ?>
         <li style="position: relative;" >
+        <?php if( $tide['different_day'] ) {?> 
+            <label style="margin: 20px 0 5px; "><?php echo $tide['time']->format( 'l - F j, Y' ); ?></label>  
+        <?php } ?>
         <div style="width: <?php get_relative_width( $tide['height'], $tide_info->get_max_tide(), $tide_info->get_min_tide() ); ?>; background: #EEE; height: 40px; position: absolute; z-index: 1;"></div>
         <div class="flex space-between" style="z-index: 2; position: relative; height: 25px; padding-top: 10px;">
             <div style="padding-left: 15px;"><?php echo $tide['type']; ?> tide</div>

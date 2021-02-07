@@ -8,6 +8,7 @@ const DATE_FORMAT = 'Y-m-d';
 const DAY_IN_SECONDS = 86400;
 
 require_once dirname( __FILE__ ) . "../../simplehtmldom_1_9_1/simple_html_dom.php";
+require_once dirname( __FILE__ ) . "../../utils/time/index.php";
 
 class Route {
     
@@ -264,11 +265,7 @@ class Route {
      * A helpful function that takes a timestamp and formats in the correct timezone.
      */
     private function _date( $format = "r", $timestamp = false, $timezone = false ) {
-        $userTimezone = new \DateTimeZone( !empty( $timezone ) ? $timezone : 'GMT' );
-        $gmtTimezone = new \DateTimeZone( 'GMT' );
-        $myDateTime = new \DateTime( ( $timestamp != false ? date( "r", (int) $timestamp) : date("r") ), $gmtTimezone );
-        $offset = $userTimezone->getOffset( $myDateTime );
-        return date( $format, ( $timestamp != false ? (int) $timestamp : $myDateTime->format('U') ) + $offset );
+        return \_date( $format, $timestamp, $timezone );
     }
     /**
      * Helper function to get back just the percentage number.
