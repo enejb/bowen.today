@@ -386,7 +386,7 @@ ul li {
 
 .shell {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 75vw;
   background: #ffffff;
   padding: 30px;
 }
@@ -397,7 +397,7 @@ ul li {
 }
 .header .header-shell {
   margin: 0 auto;
-  max-width: 880px;
+  max-width: 75vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
