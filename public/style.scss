@@ -355,6 +355,20 @@ template {
 
 // Start custom styles
 
+// Custom normalize rules
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 $font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
   Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $primary-color: #ffffff;
@@ -414,6 +428,10 @@ ul {
       color: $primary-color;
       text-decoration: none;
       padding: 10px 30px;
+
+      &.btn {
+        background-color: #444;
+      }
 
       svg {
         position: relative;
