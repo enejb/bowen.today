@@ -43,7 +43,13 @@ ul {
 }
 ul li {
   list-style: none;
-  padding: 10px 0;
+  padding: 10px;
+}
+ul li:nth-child(odd) {
+  background-color: #fafbfc;
+}
+ul li:hover {
+  background-color: #e6e6e6;
 }
 
 .shell {

@@ -67,7 +67,15 @@ ul {
 
   li {
     list-style: none;
-    padding: 10px 0;
+    padding: 10px;
+
+    &:nth-child(odd) {
+      background-color: $background-color;
+    }
+
+    &:hover {
+      background-color: $hover-color;
+    }
   }
 }
 
