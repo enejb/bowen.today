@@ -411,7 +411,10 @@ ul li {
   padding: 10px 30px;
 }
 .header .header-shell a.btn {
-  background-color: #444;
+  background-color: #222;
+}
+.header .header-shell a.btn:hover {
+  background-color: #333;
 }
 .header .header-shell a svg {
   position: relative;

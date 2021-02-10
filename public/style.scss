@@ -430,7 +430,11 @@ ul {
       padding: 10px 30px;
 
       &.btn {
-        background-color: #444;
+        background-color: #222;
+
+        &:hover {
+          background-color: #333;
+        }
       }
 
       svg {
