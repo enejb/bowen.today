@@ -1,6 +1,14 @@
-// Start custom styles
+/* Variables */
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$primary-color: #ffffff;
+$secondary-color: #1b1f23;
+$background-color: #fafbfc;
+$hover-color: #e6e6e6;
+$border-color: #cccccc;
+// end Variables
 
-// Custom normalize rules
+/* Normalize rules */
 * {
   // box-sizing: border-box;
   // padding: 0;
@@ -17,14 +25,9 @@ body {
   // height: 100%;
   // width: 100%;
 }
+// end Normalize rules
 
-$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$primary-color: #ffffff;
-$secondary-color: #1b1f23;
-$background-color: #fafbfc;
-$hover-color: #e6e6e6;
-$border-color: #cccccc;
+/*  General Styles */
 
 body {
   background: $background-color;
@@ -68,26 +71,6 @@ ul {
   li {
     list-style: none;
     padding: 10px;
-
-    &:nth-child(2n + 1) {
-      // background-color: $background-color;
-    }
-
-    &:hover {
-      // background-color: $hover-color;
-    }
-  }
-}
-
-#ferry ul {
-  li {
-    &:nth-child(2n + 1) {
-      background-color: $background-color;
-    }
-
-    &:hover {
-      background-color: $hover-color;
-    }
   }
 }
 
@@ -142,39 +125,6 @@ ul {
   }
 }
 
-.next-ferry {
-  display: flex;
-  margin-bottom: 60px;
-}
-
-.route {
-  width: 50%;
-}
-
-.time {
-  width: 50%;
-  text-align: right;
-}
-
-.to {
-  padding-bottom: 40px;
-}
-
-.map {
-  height: 200px;
-  overflow: hidden;
-  margin: -30px -30px 20px;
-  position: relative;
-
-  img {
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-  }
-}
-
 .link-button {
   display: block;
   padding: 0.75em 1.5em;
@@ -197,10 +147,73 @@ ul {
   }
 }
 
+/*  Ferry page */
+#ferry {
+  .next-ferry {
+    display: flex;
+    margin-bottom: 60px;
+  }
+
+  .route {
+    width: 50%;
+  }
+
+  .time {
+    width: 50%;
+    text-align: right;
+  }
+
+  .to {
+    padding-bottom: 40px;
+  }
+
+  .map {
+    height: 200px;
+    overflow: hidden;
+    margin: -30px -30px 20px;
+    position: relative;
+
+    img {
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+  }
+
+  ul {
+    li {
+      &:nth-child(2n + 1) {
+        background-color: $background-color;
+      }
+
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+} // end #ferry
+
+/*  Tide page */
+#tide {
+  ul {
+    li {
+      &:nth-child(2n + 1) {
+        // background-color: $background-color;
+      }
+
+      &:hover {
+        // background-color: $hover-color;
+      }
+    }
+  }
+} // end #tide
+
 /* Mobile */
 @media only screen and (max-width: 600px) {
   .shell {
-    padding: 20px;
+    // padding: 20px;
   }
 
   .map {
@@ -219,4 +232,4 @@ ul {
     height: 24px;
     width: 24px;
   }
-}
+} // end Mobile
