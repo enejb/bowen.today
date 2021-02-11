@@ -15,10 +15,10 @@ function get_relative_width( $height, $max, $min ) {
 </div>
 <div id="tide" class="shell">
     <div>
-        <div class="to">last tide:<h2><?php echo $tide_info->get_previous_tide()['type']; ?> tide -
+        <div class="padding-bottom">last tide:<h2><?php echo $tide_info->get_previous_tide()['type']; ?> tide -
                 <?php echo $tide_info->get_previous_tide()['height']; ?>m</h2>
         </div>
-        <div class="to">current tide: <h2>
+        <div class="padding-bottom">current tide: <h2>
                 <?php 
             echo $tide_info->get_current_height( 
                 $tide_info->get_previous_tide()['height'],
@@ -30,7 +30,7 @@ function get_relative_width( $height, $max, $min ) {
                 <?php echo $tide_info->get_current_movement( $tide_info->get_previous_tide()['height'], $tide_info->get_next_tide()['height'] ); ?>
             </h2>
         </div>
-        <div class="to">next tide: <h2><?php echo $tide_info->get_next_tide()['type']; ?> tide -
+        <div class="padding-bottom">next tide: <h2><?php echo $tide_info->get_next_tide()['type']; ?> tide -
                 <?php echo $tide_info->get_next_tide()['height']; ?>m</h2>
         </div>
     </div>
@@ -42,7 +42,7 @@ function get_relative_width( $height, $max, $min ) {
             <label style="margin: 20px 0 5px; "><?php echo $tide['time']->format( 'l - F j, Y' ); ?></label>
             <?php } ?>
             <div
-                style="width: <?php get_relative_width( $tide['height'], $tide_info->get_max_tide(), $tide_info->get_min_tide() ); ?>; background: #EEE; height: 40px; position: absolute; z-index: 1;">
+                style="width: <?php get_relative_width( $tide['height'], $tide_info->get_max_tide(), $tide_info->get_min_tide() ); ?>; background: #e1e4e8; height: 40px; position: absolute; z-index: 1;">
             </div>
             <div class="flex space-between" style="z-index: 2; position: relative; height: 25px; padding-top: 10px;">
                 <div style="padding-left: 15px;"><?php echo $tide['type']; ?> tide</div>

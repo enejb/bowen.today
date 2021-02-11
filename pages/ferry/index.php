@@ -30,15 +30,9 @@ require_once PAGES_DIR . '/templates/header.php';
 <div id="ferry" class="shell">
     <div class="map"><img src="https://apigateway.bcferries.com/api/currentconditions/1.0/images/vessels/route5.jpg" />
     </div>
-    <div class="next-ferry">
-        <div class="route">
-            <div class="to">to: <h2><?php echo $next_ferry['to']; ?></h2>
-            </div>
-            <div class="from">from: <h2><?php echo $next_ferry['from']; ?></h2>
-            </div>
-        </div>
-        <div class="time">
-            <div class="to">in<h2><?php 
+    <div class="flex space-between padding-bottom">
+        <div>to: <h2><?php echo $next_ferry['to']; ?></h2></div>
+        <div class="align-right">in<h2><?php 
             if ( $next_departure && $next_departure->diff( $now )->h > 1 ) {
                 echo $next_departure->diff( $now )->h . ' hours and ';
             } else if ( $next_departure && $next_departure->diff( $now )->h ) {
@@ -47,10 +41,12 @@ require_once PAGES_DIR . '/templates/header.php';
             if ( $next_departure && !empty( $next_departure->diff( $now )->i ) ) {
                 echo ( $next_departure ? $next_departure->diff( $now )->i .' min' : '' );
             } ?></h2>
-            </div>
-            <div class="from">
+        </div>
+    </div>
+    <div class="flex space-between padding-bottom">
+        <div>from: <h2><?php echo $next_ferry['from']; ?></h2></div>
+        <div>
                 <h2><?php echo ( $next_departure ? '@' . $next_departure->format( 'g:i A' ) : '' ); ?></h2>
-            </div>
         </div>
     </div>
 

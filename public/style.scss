@@ -17,6 +17,7 @@ $border-color: #cccccc;
   // smoothen up all hover transitions
   &:hover {
     transition: 0.3s ease-in-out;
+    -webkit-transition: 0.3s ease-in-out;
   }
 }
 
@@ -82,11 +83,23 @@ ul {
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .space-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+.padding-bottom {
+  padding-bottom: 40px;
+}
+
+.align-right {
+  text-align: right;
 }
 
 .flex-image {
@@ -149,24 +162,6 @@ ul {
 
 /*  Ferry page */
 #ferry {
-  .next-ferry {
-    display: flex;
-    margin-bottom: 60px;
-  }
-
-  .route {
-    width: 50%;
-  }
-
-  .time {
-    width: 50%;
-    text-align: right;
-  }
-
-  .to {
-    padding-bottom: 40px;
-  }
-
   .map {
     height: 200px;
     overflow: hidden;
@@ -212,10 +207,6 @@ ul {
 
 /* Mobile */
 @media only screen and (max-width: 600px) {
-  .shell {
-    // padding: 20px;
-  }
-
   .map {
     margin: -20px -20px 20px;
   }
