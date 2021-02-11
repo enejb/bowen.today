@@ -70,6 +70,18 @@ ul {
     padding: 10px;
 
     &:nth-child(2n + 1) {
+      // background-color: $background-color;
+    }
+
+    &:hover {
+      // background-color: $hover-color;
+    }
+  }
+}
+
+#ferry ul {
+  li {
+    &:nth-child(2n + 1) {
       background-color: $background-color;
     }
 

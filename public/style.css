@@ -45,10 +45,10 @@ ul li {
   list-style: none;
   padding: 10px;
 }
-ul li:nth-child(2n+1) {
+#ferry ul li:nth-child(2n+1) {
   background-color: #fafbfc;
 }
-ul li:hover {
+#ferry ul li:hover {
   background-color: #e6e6e6;
 }
 
