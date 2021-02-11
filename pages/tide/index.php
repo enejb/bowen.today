@@ -38,16 +38,15 @@ function get_relative_width( $height, $max, $min ) {
     <ul>
         <?php foreach( $tide_info->get_tide_entries() as $tide ) { ?>
         <li style="position: relative;">
-            <?php if( $tide['different_day'] ) {?>
-            <label style="margin: 20px 0 5px; "><?php echo $tide['time']->format( 'l - F j, Y' ); ?></label>
+            <?php if ( $tide['different_day'] ) { ?>
+                <label style="margin: 20px 0 5px; "><?php echo $tide['time']->format( 'l - F j, Y' ); ?></label>
             <?php } ?>
-            <div
-                style="width: <?php get_relative_width( $tide['height'], $tide_info->get_max_tide(), $tide_info->get_min_tide() ); ?>; background: #e1e4e8; height: 40px; position: absolute; z-index: 1;">
+            <div style="width: <?php get_relative_width( $tide['height'], $tide_info->get_max_tide(), $tide_info->get_min_tide() ); ?>; background: #e1e4e8; height: 40px; position: absolute; z-index: 1;">
             </div>
-            <div class="flex space-between" style="z-index: 2; position: relative; height: 25px; padding-top: 10px;">
-                <div style="padding-left: 15px;"><?php echo $tide['type']; ?> tide</div>
+            <div class="flex space-between" style="z-index: 2; position: relative; height: 30px; padding-top: 10px;">
+                <div style="padding-left: 15px; width: 100px;"><?php echo $tide['type']; ?> tide</div>
                 <div><?php echo $tide['height']; ?>m</div>
-                <div>@<?php echo $tide['time']->format( 'g:i A' ); ?></div>
+                <div class="align-right" style="padding-right: 15px; width: 100px;">@<?php echo $tide['time']->format( 'g:i A' ); ?></div>
             </div>
         </li>
         <?php } ?>

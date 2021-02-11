@@ -194,13 +194,7 @@ ul {
 #tide {
   ul {
     li {
-      &:nth-child(2n + 1) {
-        // background-color: $background-color;
-      }
-
-      &:hover {
-        // background-color: $hover-color;
-      }
+      padding: 0;
     }
   }
 } // end #tide

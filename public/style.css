@@ -146,6 +146,10 @@ ul li {
 }
 
 /*  Tide page */
+#tide ul li {
+  padding: 0;
+}
+
 /* Mobile */
 @media only screen and (max-width: 600px) {
   .map {
