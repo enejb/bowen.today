@@ -47,9 +47,9 @@ function get_relative_width( $height, $max, $min ) {
         <?php } ?>
         <div style="width: <?php get_relative_width( $tide['height'], $tide_info->get_max_tide(), $tide_info->get_min_tide() ); ?>; background: #EEE; height: 40px; position: absolute; z-index: 1;"></div>
         <div class="flex space-between" style="z-index: 2; position: relative; height: 25px; padding-top: 10px;">
-            <div style="padding-left: 15px;"><?php echo $tide['type']; ?> tide</div>
+            <div style="padding-left: 15px; width: 100px;"><?php echo $tide['type']; ?> tide</div>
             <div><?php echo $tide['height']; ?>m</div>
-            <div>@<?php echo $tide['time']->format( 'g:i A' ); ?></div>
+            <div class="align-right" style="padding-right: 15px; width: 100px;" >@<?php echo $tide['time']->format( 'g:i A' ); ?></div>
         </div>
         </li>
         <?php } ?>
