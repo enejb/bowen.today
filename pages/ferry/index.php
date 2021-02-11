@@ -27,7 +27,7 @@ require_once PAGES_DIR . '/templates/header.php';
 </a>
 </div>
 </div>
-<div class="shell">
+<div id="ferry" class="shell">
     <div class="map"><img src="https://apigateway.bcferries.com/api/currentconditions/1.0/images/vessels/route5.jpg" />
     </div>
     <div class="next-ferry">
