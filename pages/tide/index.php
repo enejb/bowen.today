@@ -13,7 +13,7 @@ function get_relative_width( $height, $max, $min ) {
 ?>
 </div>
 </div>
-<div class="shell">
+<div id="tide" class="shell">
     <div>
         <div class="to">last tide:<h2><?php echo $tide_info->get_previous_tide()['type']; ?> tide -
                 <?php echo $tide_info->get_previous_tide()['height']; ?>m</h2>
