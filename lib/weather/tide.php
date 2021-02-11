@@ -65,7 +65,7 @@ class Current_Tide {
       }
       
       // Back fill the first entry.
-      $this->enties[0]['type'] = $this->enties[1]['type'] == 'high' ? 'low' : 'high';
+      $this->enties[0]['type'] = $this->enties[1]['type'] == 'High' ? 'Low' : 'High';
 
       // Correct previous tide.
       if ( $this->enties[0]['time']->format( 'U' ) == $this->previous_tide['time']->format( 'U' ) ) {
@@ -88,9 +88,9 @@ class Current_Tide {
       }
 
       if ( $height > $previous_entry['height'] ) {
-        return 'high';
+        return 'High';
       }
-      return 'low';
+      return 'Low';
     }
 
     public function get_previous_tide() {
