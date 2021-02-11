@@ -106,7 +106,7 @@ class Route {
                    continue;
                 }
              
-                // This asumes that the date in the table is always int he ascending order.
+                // This assumes that the date in the table is always in the ascending order.
                 return $this->format_percentage( $row[1] );
             }
         }
@@ -185,7 +185,7 @@ class Route {
                 if ( $timestamp >= $departure_time->format( 'U' ) && $this->is_same_day( $timestamp )) {
                    continue;
                 }
-                // This asumes that the date in the table is always int he ascending order.
+                // This assumes that the date in the table is always in the ascending order.
                 $next_departure_times[] = $departure_time;
             }
         }

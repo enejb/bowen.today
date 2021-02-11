@@ -1,3 +1,11 @@
+/* Variables */
+/* Normalize rules */
+*:hover {
+  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+}
+
+/*  General Styles */
 body {
   background: #fafbfc;
   margin: 0;
@@ -7,7 +15,7 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 2.5rem;
   margin-bottom: 0;
 }
 
@@ -16,8 +24,13 @@ h1 {
 }
 
 h2 {
+  font-size: 1.8rem;
   font-size: 28px;
   margin: 0;
+}
+
+h3 {
+  font-size: 1.4rem;
 }
 
 label {
@@ -33,7 +46,7 @@ ul {
 }
 ul li {
   list-style: none;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 .shell {
@@ -44,12 +57,24 @@ ul li {
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .space-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
-} 
+}
+
+.padding-bottom {
+  padding-bottom: 40px;
+}
+
+.align-right {
+  text-align: right;
+}
 
 .flex-image {
   margin-top: 16px;
@@ -61,7 +86,7 @@ ul li {
 }
 .header .header-shell {
   margin: 0 auto;
-  max-width: 880px;
+  max-width: 860px;
   display: flex;
   justify-content: space-between;
 }
@@ -70,42 +95,13 @@ ul li {
   text-decoration: none;
   padding: 10px 30px;
 }
+.header .header-shell a.btn:hover {
+  background-color: #333;
+}
 .header .header-shell a svg {
   position: relative;
   top: 2px;
   fill: #ffffff;
-}
-
-.next-ferry {
-  display: flex;
-  margin-bottom: 60px;
-}
-
-.route {
-  width: 50%;
-}
-
-.time {
-  width: 50%;
-  text-align: right;
-}
-
-.to {
-  padding-bottom: 40px;
-}
-
-.map {
-  height: 200px;
-  overflow: hidden;
-  margin: -30px -30px 20px;
-  position: relative;
-}
-.map img {
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
 }
 
 .link-button {
@@ -115,8 +111,11 @@ ul li {
   line-height: 1.5;
   background-color: #fafbfc;
   color: #1b1f23;
-  font-size: 32px;
+  font-size: 2rem;
   text-decoration: none;
+}
+.link-button:hover {
+  background-color: #e6e6e6;
 }
 .link-button svg {
   height: 32px;
@@ -125,12 +124,30 @@ ul li {
   top: 6px;
 }
 
+/*  Ferry page */
+#ferry .map {
+  height: 200px;
+  overflow: hidden;
+  margin: -30px -30px 20px;
+  position: relative;
+}
+#ferry .map img {
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+#ferry ul li:nth-child(2n+1) {
+  background-color: #fafbfc;
+}
+#ferry ul li:hover {
+  background-color: #e6e6e6;
+}
+
+/*  Tide page */
 /* Mobile */
 @media only screen and (max-width: 600px) {
-  .shell {
-    padding: 20px;
-  }
-
   .map {
     margin: -20px -20px 20px;
   }

@@ -20,7 +20,6 @@ Thanks for stopping by.
 - `current_capacity: %`
 - `has_current_capacity: available (bool)`
 
-
 http://bowen.today/api/v1/ferry/vancouver-bowen \
 http://bowen.today/api/v1/ferry/bowen-vancouver
 
@@ -29,14 +28,16 @@ http://bowen.today/api/v1/ferry/bowen-vancouver/2021-02-22
 
 ### Local development.
 
-To start the server for local development.
+To start the server for local development
 
 ```
 cd public
 php -S localhost:8000
+cmd+c to terminate
 ```
 
-then visit
+Then visit
+
 [localhost:8000](http://localhost:8000/)
 
 ### Sass Basics.
@@ -78,6 +79,7 @@ sass --watch style.scss style.css
 ## Secrets
 
 Rename secrets.example.php to secrets.php
+
 ```
 cp secrets.example.php secrets.php
 ```

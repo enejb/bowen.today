@@ -1,9 +1,34 @@
+/* Variables */
 $font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
   Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $primary-color: #ffffff;
 $secondary-color: #1b1f23;
 $background-color: #fafbfc;
+$hover-color: #e6e6e6;
 $border-color: #cccccc;
+// end Variables
+
+/* Normalize rules */
+* {
+  // box-sizing: border-box;
+  // padding: 0;
+  // margin: 0;
+
+  // smoothen up all hover transitions
+  &:hover {
+    transition: 0.3s ease-in-out;
+    -webkit-transition: 0.3s ease-in-out;
+  }
+}
+
+html,
+body {
+  // height: 100%;
+  // width: 100%;
+}
+// end Normalize rules
+
+/*  General Styles */
 
 body {
   background: $background-color;
@@ -15,15 +40,22 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 2.5rem;
   margin-bottom: 0;
 }
+
 .main-title {
   font-weight: normal;
 }
+
 h2 {
+  font-size: 1.8rem;
   font-size: 28px;
   margin: 0;
+}
+
+h3 {
+  font-size: 1.4rem;
 }
 
 label {
@@ -39,7 +71,7 @@ ul {
 
   li {
     list-style: none;
-    padding: 10px 0;
+    padding: 10px;
   }
 }
 
@@ -51,12 +83,24 @@ ul {
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .space-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
-} 
+}
+
+.padding-bottom {
+  padding-bottom: 40px;
+}
+
+.align-right {
+  text-align: right;
+}
 
 .flex-image {
   margin-top: 16px;
@@ -68,7 +112,7 @@ ul {
 
   .header-shell {
     margin: 0 auto;
-    max-width: 880px;
+    max-width: 860px;
     display: flex;
     justify-content: space-between;
 
@@ -76,6 +120,14 @@ ul {
       color: $primary-color;
       text-decoration: none;
       padding: 10px 30px;
+
+      &.btn {
+        // background-color: red; // debug
+
+        &:hover {
+          background-color: #333;
+        }
+      }
 
       svg {
         position: relative;
@@ -86,39 +138,6 @@ ul {
   }
 }
 
-.next-ferry {
-  display: flex;
-  margin-bottom: 60px;
-}
-
-.route {
-  width: 50%;
-}
-
-.time {
-  width: 50%;
-  text-align: right;
-}
-
-.to {
-  padding-bottom: 40px;
-}
-
-.map {
-  height: 200px;
-  overflow: hidden;
-  margin: -30px -30px 20px;
-  position: relative;
-
-  img {
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-  }
-}
-
 .link-button {
   display: block;
   padding: 0.75em 1.5em;
@@ -126,8 +145,12 @@ ul {
   line-height: 1.5;
   background-color: $background-color;
   color: $secondary-color;
-  font-size: 32px;
+  font-size: 2rem;
   text-decoration: none;
+
+  &:hover {
+    background-color: $hover-color;
+  }
 
   svg {
     height: 32px;
@@ -137,12 +160,53 @@ ul {
   }
 }
 
-/* Mobile */
-@media only screen and (max-width: 600px) {
-  .shell {
-    padding: 20px;
+/*  Ferry page */
+#ferry {
+  .map {
+    height: 200px;
+    overflow: hidden;
+    margin: -30px -30px 20px;
+    position: relative;
+
+    img {
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
   }
 
+  ul {
+    li {
+      &:nth-child(2n + 1) {
+        background-color: $background-color;
+      }
+
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+} // end #ferry
+
+/*  Tide page */
+#tide {
+  ul {
+    li {
+      &:nth-child(2n + 1) {
+        // background-color: $background-color;
+      }
+
+      &:hover {
+        // background-color: $hover-color;
+      }
+    }
+  }
+} // end #tide
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
   .map {
     margin: -20px -20px 20px;
   }
@@ -159,4 +223,4 @@ ul {
     height: 24px;
     width: 24px;
   }
-}
+} // end Mobile
