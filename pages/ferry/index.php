@@ -17,35 +17,22 @@ if( $route_slug == 'vancouver-bowen' ) {
 
 require_once PAGES_DIR . '/templates/header.php';
 ?>
-<div class="header">
-    <div class="header-shell">
-        <a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                <path fill-rule="evenodd"
-                    d="M9.78 12.78a.75.75 0 01-1.06 0L4.47 8.53a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L6.06 8l3.72 3.72a.75.75 0 010 1.06z">
-                </path>
-            </svg>Back</a>
-        <a href="<?php echo $switch_direction_url;?>">
-            Switch Directions
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                <path
-                    d="M5.22 14.78a.75.75 0 001.06-1.06L4.56 12h8.69a.75.75 0 000-1.5H4.56l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3a.75.75 0 000 1.06l3 3zm5.56-6.5a.75.75 0 11-1.06-1.06l1.72-1.72H2.75a.75.75 0 010-1.5h8.69L9.72 2.28a.75.75 0 011.06-1.06l3 3a.75.75 0 010 1.06l-3 3z">
-                </path>
-            </svg>
-        </a>
-    </div>
+<a class="btn" href="<?php echo $switch_direction_url;?>" target="_self" title="<?php echo $switch_direction_url;?>">
+    Switch Directions
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+        <path
+            d="M5.22 14.78a.75.75 0 001.06-1.06L4.56 12h8.69a.75.75 0 000-1.5H4.56l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3a.75.75 0 000 1.06l3 3zm5.56-6.5a.75.75 0 11-1.06-1.06l1.72-1.72H2.75a.75.75 0 010-1.5h8.69L9.72 2.28a.75.75 0 011.06-1.06l3 3a.75.75 0 010 1.06l-3 3z">
+        </path>
+    </svg>
+</a>
 </div>
-<div class="shell">
+</div>
+<div id="ferry" class="shell">
     <div class="map"><img src="https://apigateway.bcferries.com/api/currentconditions/1.0/images/vessels/route5.jpg" />
     </div>
-    <div class="next-ferry">
-        <div class="route">
-            <div class="to">to: <h2><?php echo $next_ferry['to']; ?></h2>
-            </div>
-            <div class="from">from: <h2><?php echo $next_ferry['from']; ?></h2>
-            </div>
-        </div>
-        <div class="time">
-            <div class="to">in<h2><?php 
+    <div class="flex space-between padding-bottom">
+        <div>to: <h2><?php echo $next_ferry['to']; ?></h2></div>
+        <div class="align-right">in<h2><?php 
             if ( $next_departure && $next_departure->diff( $now )->h > 1 ) {
                 echo $next_departure->diff( $now )->h . ' hours and ';
             } else if ( $next_departure && $next_departure->diff( $now )->h ) {
@@ -54,10 +41,12 @@ require_once PAGES_DIR . '/templates/header.php';
             if ( $next_departure && !empty( $next_departure->diff( $now )->i ) ) {
                 echo ( $next_departure ? $next_departure->diff( $now )->i .' min' : '' );
             } ?></h2>
-            </div>
-            <div class="from">
+        </div>
+    </div>
+    <div class="flex space-between padding-bottom">
+        <div>from: <h2><?php echo $next_ferry['from']; ?></h2></div>
+        <div>
                 <h2><?php echo ( $next_departure ? '@' . $next_departure->format( 'g:i A' ) : '' ); ?></h2>
-            </div>
         </div>
     </div>
 
