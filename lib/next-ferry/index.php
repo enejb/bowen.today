@@ -6,7 +6,8 @@
  */
 namespace NextFerry;
 
-require_once( 'class-route.php' );
+require_once 'class-route.php' ;
+require_once LIB_PATH . '/utils/cache/index.php';
 
 function get_routes() {
     // This is where we define all the possible routes.

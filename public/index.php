@@ -8,6 +8,7 @@ if ( file_exists( '../secrets.php' ) ) {
 }
 
 define( 'LIB_PATH', realpath ( dirname( __FILE__ ) . '/../lib' ) );
+define( 'CACHE_PATH', realpath ( dirname( __FILE__ ) . '/../cache' ));
 
 require_once '../pages/index.php';
 

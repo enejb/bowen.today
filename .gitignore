@@ -11,3 +11,4 @@ Thumbs.db
 
 # Secrets are kept here.
 secrets.php
+*.cache

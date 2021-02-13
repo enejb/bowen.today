@@ -210,10 +210,16 @@ class Route {
             return $this->in_memory_cache[ $url ];
         }
 
+        $tableData = \Cache::get( $url );
+        if ( $tableData ) {
+            $this->in_memory_cache[ $url ] = $tableData;
+            return $tableData;
+        }
+
         $html = file_get_html( $url );
 
         // Bowen Times are the first table.
-        // todo: This files pretty hard if ther talbe doesn't exists.
+        // todo: This files pretty hard if ther tabel doesn't exists.
         $table = $html->find( 'table' , 0 );
 
         $tableData = []; // each item the array is a new row
@@ -238,6 +244,7 @@ class Route {
         }
 
         $this->in_memory_cache[ $url ] = $tableData;
+        \Cache::set( $url, $tableData );
 
         return $tableData;
     }
