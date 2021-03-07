@@ -4,7 +4,7 @@ define( 'BC_TIMEZONE', 'America/Vancouver' );
 define( 'DATE_FORMAT', 'Y-m-d' );
 
 function _date( $format = "r", $timestamp = false, $timezone = false ) {
-    $userTimezone = new \DateTimeZone( !empty( $timezone ) ? $timezone : 'GMT' );
+    $userTimezone = new \DateTimeZone( !empty( $timezone ) ? $timezone : BC_TIMEZONE );
     $gmtTimezone = new \DateTimeZone( 'GMT' );
     $myDateTime = new \DateTime( ( $timestamp != false ? date( "r", (int) $timestamp) : date("r") ), $gmtTimezone );
     $offset = $userTimezone->getOffset( $myDateTime );

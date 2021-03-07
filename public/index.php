@@ -10,7 +10,7 @@ if ( file_exists( '../secrets.php' ) ) {
 define( 'LIB_PATH', realpath ( dirname( __FILE__ ) . '/../lib' ) );
 define( 'CACHE_PATH', realpath ( dirname( __FILE__ ) . '/../cache' ));
 
-require_once '../pages/index.php';
+require_once  '../pages/index.php';
 
 // Take the server path and
 $path = ( isset( $_GET['path'] ) ?
@@ -40,6 +40,9 @@ switch ( $exploded_path[0] ) {
         die();
     case 'home':
         page_home();
+        die();
+    case 'bus':
+        page_bus( $exploded_path );
         die();
     default:
         page_404();

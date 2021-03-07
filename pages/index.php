@@ -124,3 +124,39 @@ function page_tide() {
     require_once LIB_PATH . '/weather/tide.php';
     require_once PAGES_DIR . '/tide/index.php';
 }
+
+function page_bus( $path ) {
+
+    $now = time();
+    $default_path = [ 'bus', 'home', 'outbound' ];
+    list( $root, $route_slug, $direction ) = default_args( $path, $default_path );
+
+    require_once LIB_PATH . '/bus/index.php';
+    $routes = \NextBus\get_routes();
+
+    switch ( $route_slug ) {
+        case 'home';
+            require_once PAGES_DIR . '/bus/home.php';
+            break;
+
+        case 'stop';
+            $default_path = [ 'bus', 'stop', 'route', 'busstop'  ];
+            list( $root, $slug, $route_slug, $bus_stop_number ) = default_args( $path, $default_path );
+            
+            if ( ! isset( $routes[ $route_slug ] ) ) {
+                page_404(); 
+                break;
+            }
+
+            require_once PAGES_DIR . '/bus/stop.php';
+            break;
+        default;
+            require_once PAGES_DIR . '/bus/route.php';
+            if ( isset( $routes[ $route_slug ] ) ) {
+                require_once PAGES_DIR . '/bus/route.php';
+                break;
+            }
+            page_404();
+            break;
+    }
+}

@@ -1,11 +1,13 @@
 /* Variables */
 $font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
   Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$primary-color: #ffffff;
+$primary-bg-color: #ffffff;
 $secondary-color: #1b1f23;
 $background-color: #fafbfc;
 $hover-color: #e6e6e6;
 $border-color: #cccccc;
+$red:	#d73a49;
+$red-900: #86181d;
 // end Variables
 
 /* Normalize rules */
@@ -78,7 +80,7 @@ ul {
 .shell {
   margin: 0 auto;
   max-width: 800px;
-  background: $primary-color;
+  background: $primary-bg-color;
   padding: 30px;
 }
 
@@ -108,7 +110,7 @@ ul {
 
 .header {
   background-color: $secondary-color;
-  color: $primary-color;
+  color: $primary-bg-color;
 
   .header-shell {
     margin: 0 auto;
@@ -117,12 +119,11 @@ ul {
     justify-content: space-between;
 
     a {
-      color: $primary-color;
+      color: $primary-bg-color;
       text-decoration: none;
       padding: 10px 30px;
 
       &.btn {
-        // background-color: red; // debug
 
         &:hover {
           background-color: #333;
@@ -132,7 +133,7 @@ ul {
       svg {
         position: relative;
         top: 2px;
-        fill: $primary-color;
+        fill: $primary-bg-color;
       }
     }
   }
@@ -199,6 +200,27 @@ ul {
   }
 } // end #tide
 
+/* Bus */
+#map { height: 280px; background: gray; margin: -30px -30px 20px -30px; }
+.marker {
+    background-color: #FFF;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align:center;
+    border: 1px solid #AAA;
+    line-height: 20px;
+    text-decoration: 0;
+    color: #AAA;
+}
+.current_marker {
+  background-color: $red;
+  border: 1px solid $red-900;
+  color: #FFF;
+}
+// end Bus 
 /* Mobile */
 @media only screen and (max-width: 600px) {
   .map {
