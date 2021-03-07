@@ -49,13 +49,9 @@ require_once PAGES_DIR . '/templates/header.php';
     border: 1px solid #AAA;
     line-height: 20px;
     text-decoration: none;
-    color: color: #333;
+    color: #333;
 }
-.current_marker {
-  background-color: $red;
-  border: 1px solid $red-900;
-  color: #FFF;
-}
+
 </style>
 <script>
 var stops = <?php echo json_encode( array_values( $route->get_stops() ) ); ?>;
