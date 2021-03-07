@@ -44,6 +44,31 @@ $arrow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16"
 </div>
 
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+<style>
+#map { 
+  height: 280px; 
+  background: gray; 
+  margin: -30px -30px 20px -30px; 
+}
+.marker {
+    background-color: #FFF;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #AAA;
+    line-height: 20px;
+    text-decoration: none;
+    color: #333;
+}
+.current_marker {
+  background-color: #d73a49;
+  border: 1px solid #86181d;
+  color: #FFF;
+}
+</style>
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
 <script>
 var current_stop = <?php echo json_encode( $bus_stop ); ?>;

@@ -57,12 +57,12 @@ class Route {
         // http://m.transitdb.ca/routes/281/O/
         $stops = $this->fetch_stops( $this->get_route_url() );
  
-        return array_map( function( $stop ) { return new Stop( $stop ); }, (array)$stops );
+        return array_map( function( $stop ) { return new Stop( $stop ); }, (array) $stops );
     }
 
     private function fetch_stops( $url ) {
 
-        $stops = \Cache::get( $url );
+        $stops = \Cache::get( $url, DAY_IN_SECONDS * 7 );
         if ( $stops ) {
             return $stops;
         }
@@ -91,10 +91,12 @@ class Route {
         }
 
         $stops = $this->get_stop_coordianates( $stops );
+    
+        $simple_stops = array_values( $stops );
         // Store
-        \Cache::set( $url, $stops );
+        \Cache::set( $url, $simple_stops );
 
-        return $stops;
+        return $simple_stops;
     }
 
     private function get_stop_coordianates( $stop_ids ) {
@@ -120,8 +122,10 @@ class Route {
 
     public function get_stop( $id ) {
         $stops = $this->get_stops();
-        if ( isset( $stops[ $id ] ) ) {
-            return $stops[ $id ];
+        foreach ( $stops as $stop ) {
+            if ( $stop->id() === $id ) {
+                return $stop;
+            }
         }
         return false;
     }

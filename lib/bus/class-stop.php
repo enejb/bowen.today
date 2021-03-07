@@ -44,6 +44,7 @@ class Stop {
 
     public function fetch_next_bus() {
         $url = "http://m.transitdb.ca/nextbus/{$this->id}/?show=50";
+
         $html = file_get_html( $url );
         
         // Find the links...
@@ -83,6 +84,7 @@ class Stop {
        if ( 'Saturday' === $today ) {
         return $timetable['saturday'];
        }
+       
        if ( 'Sunday' === $today ) {
         return $timetable['sunday'];
        }
@@ -92,6 +94,12 @@ class Stop {
 
     private function fetch_timetable() {
         $url = "http://m.transitdb.ca/timetable/{$this->bus_number}/{$this->id}/";
+
+        $tableData = \Cache::get( $url, DAY_IN_SECONDS * 7 );
+        if( $tableData ) {
+            return (array) $tableData;
+        }
+        
         $html = file_get_html( $url );
         
         $tables_map = [ 'weekday' => 1, 'saturday' => 2, 'sunday' => 3 ];
@@ -100,6 +108,8 @@ class Stop {
             $tableData[ $day ] = $this->get_table_data_from_html( $table_number, $html );
         }
 
+        // Store
+        \Cache::set( $url, $tableData );
         return $tableData;
     }
 

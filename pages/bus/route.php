@@ -19,21 +19,44 @@ require_once PAGES_DIR . '/templates/header.php';
 </a>
 </div>
 </div>
-
-
 <div id="home" class="shell">
-<div id="map"></div>
-
+    <div id="map"></div>
     <h1 class="link-button"><?php echo $route->bus_number();?> <?php echo $route->from();?> <?php echo $arrow; ?> <?php echo $route->to(); ?></h1>
     <?php 
     $stop_counter = 1;
-    foreach ( $route->get_stops() as $stop ) { ?>
+    foreach ( $route->get_stops() as $stop ) {         
+        ?>
         <a href="/bus/stop/<?php echo $route_slug; ?>/<?php echo $stop->id();?>" class="link-button"><?php echo $stop_counter; ?> - <?php echo $stop->name() ?></a>
     <?php $stop_counter++; } ?>
 </div>
 
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+<style>
+#map { 
+  height: 280px; 
+  background: gray; 
+  margin: -30px -30px 20px -30px; 
+}
+.marker {
+    background-color: #FFF;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align:center;
+    border: 1px solid #AAA;
+    line-height: 20px;
+    text-decoration: none;
+    color: color: #333;
+}
+.current_marker {
+  background-color: $red;
+  border: 1px solid $red-900;
+  color: #FFF;
+}
+</style>
 <script>
 var stops = <?php echo json_encode( array_values( $route->get_stops() ) ); ?>;
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5lamJhamdvcmljMiIsImEiOiJja2xweGg4MXAweGg0MnVvNDZreGk2ZHVuIn0.4-52w7OSbrfZRtEber53tQ';

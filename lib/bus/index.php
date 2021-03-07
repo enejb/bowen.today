@@ -20,7 +20,6 @@ function get_routes() {
         'to' => 'Bluewater',
         'outbound' => true,
         'retun_id' => '280:bluewater:snug-cove',
-        'nav' => [ -123.370154, 49.365900 ],
     ] );
 
     $routes['280:bluewater:snug-cove'] = new Route( [
@@ -31,7 +30,6 @@ function get_routes() {
         'to' => 'Snug Cove',
         'outbound' => false,
         'retun_id' => '280:snug-cove:bluewater',
-        'nav' => [ -123.370154, 49.365900 ],
     ] );
 
     // This is where we define all the possible routes.
@@ -41,7 +39,7 @@ function get_routes() {
         'name' => '281 Eagle Cliff',
         'from' => 'Snug Cove', 
         'to' => 'Eagle Cliff',
-        'outbound' => true,
+        'outbound' => false,
         'retun_id' => '281:eagle-cliff:snug-cove',
     ] );
     
@@ -51,7 +49,7 @@ function get_routes() {
         'name' => '281 Snug Cove',
         'from' => 'Eagle Cliff', 
         'to' => 'Snug Cove',
-        'outbound' => false,
+        'outbound' => true,
         'retun_id' => '281:snug-cove:eagle-cliff',
     ] );
 
@@ -61,7 +59,7 @@ function get_routes() {
         'name' => '282 mt-gardner',
         'from' => 'Snug Cove',
         'to' => 'Mt Gardner',
-        'outbound' => true,
+        'outbound' => false,
         'retun_id' => '282:mt-gardner:snug-cove',
     ] );
 
@@ -71,7 +69,7 @@ function get_routes() {
         'name' => '282 Snug Cove',
         'from' => 'Mt Gardner',
         'to' => 'Snug Cove',
-        'outbound' => false,
+        'outbound' => true,
         'retun_id' => '282:snug-code:mt-gardner',
     ] );
     

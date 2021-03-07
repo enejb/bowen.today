@@ -151,32 +151,6 @@ ul li {
 }
 
 /* Bus */
-#map {
-  height: 280px;
-  background: gray;
-  margin: -30px -30px 20px -30px;
-}
-
-.marker {
-  background-color: #FFF;
-  background-size: cover;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  cursor: pointer;
-  text-align: center;
-  border: 1px solid #AAA;
-  line-height: 20px;
-  text-decoration: 0;
-  color: #AAA;
-}
-
-.current_marker {
-  background-color: #d73a49;
-  border: 1px solid #86181d;
-  color: #FFF;
-}
-
 /* Mobile */
 @media only screen and (max-width: 600px) {
   .map {
