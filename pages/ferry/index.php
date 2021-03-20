@@ -1,6 +1,7 @@
 <?php 
 
 $next_ferry = $route->get_api_reponse( $timestamp );
+
 $next_departure = DateTime::createFromFormat( DATE_RFC822, $next_ferry['next_departure'] );
 $now = new DateTime();
 
@@ -10,7 +11,7 @@ $title = 'Bowen Island Ferry Schedule';
 // $switch_direction_url 
 $switch_direction_url = '/ferry/vancouver-bowen';
 
-if( $route_slug == 'vancouver-bowen' ) {
+if ( $route_slug == 'vancouver-bowen' ) {
     $switch_direction_url = '/ferry/bowen-vancouver';
 }
 
@@ -38,6 +39,8 @@ require_once PAGES_DIR . '/templates/header.php';
             } else if ( $next_departure && $next_departure->diff( $now )->h ) {
                 echo $next_departure->diff( $now )->h . ' hour and ';
             }
+
+            // Show next departure 
             if ( $next_departure && !empty( $next_departure->diff( $now )->i ) ) {
                 echo ( $next_departure ? $next_departure->diff( $now )->i .' min' : '' );
             } ?></h2>
@@ -53,8 +56,32 @@ require_once PAGES_DIR . '/templates/header.php';
     <label>Following Departures</label>
     <!-- Separate Departures Today from Departures Next Day -->
     <ul>
-        <?php foreach( $next_ferry['remaining_departures'] as $departure ) { ?>
-        <li>@<?php 
+        <?php 
+            $today_departures = array_filter( $next_ferry['remaining_departures'], function( $date ) { 
+                $departure_time = DateTime::createFromFormat( DATE_RFC822, $date );
+                return is_same_day( $departure_time->format( 'U' ) );
+            } );
+      
+        foreach ( $today_departures as $departure ) { ?>
+            <li>@ <?php 
+                $departure_time = DateTime::createFromFormat( DATE_RFC822, $departure );
+                echo $departure_time->format( 'g:i A' );
+            ?>
+            </li>
+        <?php } ?>
+    </ul>
+    
+    <label style="margin-top: 24px;">Next Day Departures</label>
+    <!-- Separate Departures Today from Departures Next Day -->
+    <ul>
+        <?php
+        // Get the next days departures
+        $next_day_ferry = $route->get_api_reponse( $timestamp + DAY_IN_SECONDS );
+        // We need to add next departure back to the remaining departures.
+        array_unshift( $next_day_ferry['remaining_departures'], $next_day_ferry['next_departure'] );
+        
+        foreach ( $next_day_ferry['remaining_departures'] as $departure ) { ?>
+        <li>@ <?php 
             $departure_time = DateTime::createFromFormat( DATE_RFC822, $departure );
             echo $departure_time->format( 'g:i A' );
         ?>
