@@ -84,7 +84,7 @@ class Route {
             return 'unknown';
         }
 
-        $schedules_data = $this->fetch_raw_data( $this->get_current_conditions_url() );
+        $schedules_data = $this->fetch_raw_data( $this->get_current_conditions_url(), $timestamp );
 
         $date = null;
         if ( ! $this->is_same_day( $timestamp ) ) {
@@ -145,7 +145,7 @@ class Route {
      */
     private function get_next_schedule_departure_times( $timestamp, $url , $next_day_departures = true ) {
         // We don't have the data yet lets fetch it. 
-        $schedules_data = $this->fetch_raw_data( $url );
+        $schedules_data = $this->fetch_raw_data( $url, $timestamp );
         $next_schedules_departures =  $this->get_next_schedule_departure_times_from_schedule( $schedules_data, $timestamp );
 
         if ( count( $next_schedules_departures ) < 4 && $next_day_departures ) {
@@ -197,12 +197,23 @@ class Route {
 
         return $next_departure_times;
     }
+
+    private function get_expiry_time( $timestamp ) {
+        if ( $this->current_conditions_data( $timestamp ) ) {
+            return 120; // Lets keep not fetch the date for more then every 2 minutes.
+        } 
+        if( $this->is_same_day( $timestamp ) ) { 
+            return 300; // Lets keep it for 5 minutes
+        }
+    
+        return DAY_IN_SECONDS; // if we are looking at data for the next day lets keep it.
+    }
     /**
      * Fetches the raw table data with minimal clean up.
      * And strores it in memory cache so that we can get it quickly again if we need it.
      * 
      */
-    private function fetch_raw_data( $url ) {
+    private function fetch_raw_data( $url, $timestamp ) {
      
         if ( isset( $this->in_memory_cache[ $url ] ) ) { 
             // We could be more aggressive here since the scheduled data doesn't change that often
@@ -210,7 +221,7 @@ class Route {
             return $this->in_memory_cache[ $url ];
         }
 
-        $tableData = \Cache::get( $url );
+        $tableData = \Cache::get( $url, $this->get_expiry_time( $timestamp ) );
         if ( $tableData ) {
             $this->in_memory_cache[ $url ] = $tableData;
             return $tableData;
@@ -224,7 +235,7 @@ class Route {
 
         $tableData = []; // each item the array is a new row
 
-        foreach( $table->find('tr') as $row ) {
+        foreach ( $table->find('tr') as $row ) {
             // initialize array to store the cell data from each row
             $columns = [];
             foreach( $row->find('td') as $cell ) {
