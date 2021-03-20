@@ -43,7 +43,13 @@ require_once PAGES_DIR . '/templates/header.php';
             // Show next departure 
             if ( $next_departure && !empty( $next_departure->diff( $now )->i ) ) {
                 echo ( $next_departure ? $next_departure->diff( $now )->i .' min' : '' );
-            } ?></h2>
+            }
+            // Fix for when the ferry is leaving in less then a minute
+            if ( $next_departure && empty( $next_departure->diff( $now )->h ) && empty( $next_departure->diff( $now )->i ) ) {
+                echo "Now"; 
+            }
+            
+            ?></h2>
         </div>
     </div>
     <div class="flex space-between padding-bottom">
