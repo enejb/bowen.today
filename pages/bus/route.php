@@ -51,7 +51,6 @@ require_once PAGES_DIR . '/templates/header.php';
     text-decoration: none;
     color: #333;
 }
-
 </style>
 <script>
 var stops = <?php echo json_encode( array_values( $route->get_stops() ) ); ?>;
@@ -75,8 +74,6 @@ function find_center( stops ) {
     var mid_lat =  ( ( max_lat - min_lat ) / 2 ) + min_lat;
     return [ mid_lng, mid_lat ];
 }
-
-// 49.376765 
 
 var i = 0;
 while ( stops[ i ] ) {
