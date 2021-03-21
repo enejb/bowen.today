@@ -1,6 +1,7 @@
 <?php
 
 require_once LIB_PATH . '/utils/time/index.php';
+require_once LIB_PATH . '/utils/cache/index.php';
 
 /**
  * A librarie that returns bowen weather.
@@ -9,11 +10,22 @@ require_once LIB_PATH . '/utils/time/index.php';
  *
  */
 function get_current_bowen_tide() {
-    //
+
+    $url = "https://apps.qedsystems.ca/weather/getTides?station=GIBSONS";
+
+    $tide_args = Cache::get( $url );
+
+    if ( $tide_args ) {
+      return new Current_Tide( $tide_args, ( DAY_IN_SECONDS / 6 )  ); // cache for 4 hours
+    }
+
     // Use the Gibsons location now.
-    $api_reponse = file_get_contents( "https://apps.qedsystems.ca/weather/getTides?station=GIBSONS" );
+    $api_reponse = file_get_contents( $url );
 
     $args = json_decode( $api_reponse );
+
+    Cache::set( $url, $args );
+
     return new Current_Tide( $args );
 }
 
@@ -134,5 +146,4 @@ class Current_Tide {
       return 'rising <svg style="width: 28px; height:28px; margin-bottom: -6px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M6.47 10.78a.75.75 0 010-1.06l5.25-5.25a.75.75 0 011.06 0l5.25 5.25a.75.75 0 11-1.06 1.06L13 6.81v12.44a.75.75 0 01-1.5 0V6.81l-3.97 3.97a.75.75 0 01-1.06 0z"></path></svg>';
     }
 
-    
 }
