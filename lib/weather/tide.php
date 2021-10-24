@@ -32,7 +32,7 @@ function get_current_bowen_tide() {
 class Current_Tide {
     private $args;
 
-    private $enties = [];
+    private $entries = [];
     private $previous_tide = [];
     private $next_tide = [];
     private $min_tide = null;
@@ -73,15 +73,15 @@ class Current_Tide {
           } 
 
           $previous_entry = $tide_entry;
-          $this->enties[] = $tide_entry;
+          $this->entries[] = $tide_entry;
       }
       
       // Back fill the first entry.
-      $this->enties[0]['type'] = $this->enties[1]['type'] == 'High' ? 'Low' : 'High';
+      $this->entries[0]['type'] = $this->entries[1]['type'] == 'High' ? 'Low' : 'High';
 
       // Correct previous tide.
-      if ( $this->enties[0]['time']->format( 'U' ) == $this->previous_tide['time']->format( 'U' ) ) {
-        $this->previous_tide['type'] = $this->enties[0]['type'];
+      if ( $this->entries[0]['time']->format( 'U' ) == $this->previous_tide['time']->format( 'U' ) ) {
+        $this->previous_tide['type'] = $this->entries[0]['type'];
       }
     }
 
@@ -114,7 +114,7 @@ class Current_Tide {
     }
 
     public function get_tide_entries() {
-      return $this->enties;
+      return $this->entries;
     }
 
     public function get_min_tide() {
