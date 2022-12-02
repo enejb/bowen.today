@@ -307,7 +307,7 @@ class Route {
      *  '90% Available' => '0.90'
      */
     private function format_percentage( $percentage_string ) {
-        return '0.' . \str_replace( '%', '', $percentage_string ); 
+        return \str_replace( '%', '', $percentage_string ) / 100; 
     }
 
 }
