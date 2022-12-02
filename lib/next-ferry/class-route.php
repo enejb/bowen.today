@@ -36,7 +36,7 @@ class Route {
 
     public function get_api_reponse( $timestamp = null ) {
     
-        $timestamp?? time();
+       $timestamp?? time();
 
        $departures = $this->get_remaining_departures_times_formated( $timestamp );
        $next_departure = array_shift( $departures );
@@ -83,7 +83,6 @@ class Route {
         if ( ! $this->current_conditions_data( $timestamp ) ) { 
             return 'unknown';
         }
-
         $schedules_data = $this->fetch_raw_data( $this->get_current_conditions_url(), $timestamp );
 
         $date = null;
@@ -93,21 +92,29 @@ class Route {
         
         foreach ( $schedules_data as $row  ) {
             // the first column of the row is probably what we want in this case.
-            if ( $this->starts_with_number( $row[0] ) ) {
-             
-                // Current data array contains tomorrows departure times.
-                if ( $pos = strpos( $row[0], '(Tomorrow)' ) ) {
-                    $departure_time = $this->str_to_date_object( trim( substr( $row[0], 0, $pos ) ), $this->_date( DATE_FORMAT, time() + DAY_IN_SECONDS, BC_TIMEZONE ) );
-                } else {
-                    $departure_time = $this->str_to_date_object( $row[0], $date );
+            $cleanCol = trim( $row[0] );
+            if ( $this->starts_with_number( $cleanCol ) ) {
+                if ( $pos = strpos( $cleanCol, 'Queen of Capilano' ) ) {
+                    $cleanCol = trim( substr( $cleanCol, 0, $pos ) );
                 }
-                
+                // Current data array contains tomorrows departure times.
+                if ( $pos = strpos( $cleanCol, '(Tomorrow)' ) ) {
+                    $departure_time = $this->str_to_date_object( trim( substr( $cleanCol, 0, $pos ) ), $this->_date( DATE_FORMAT, time() + DAY_IN_SECONDS, BC_TIMEZONE ) );
+                } else {
+                    $departure_time = $this->str_to_date_object( $cleanCol, $date );
+                }
+                if (! $departure_time) {
+                    print "ERROR: missed availability entry\n";
+                    print "Clean row: [" . $cleanCol . "]\n";
+                    continue;
+                }                
                 if ( $timestamp >= $departure_time->format( 'U' ) ) {
                    continue;
                 }
              
                 // This assumes that the date in the table is always in the ascending order.
-                return $this->format_percentage( $row[1] );
+                preg_match('/\d+%/', $row[1], $matches);
+                return $this->format_percentage( $matches[0] );
             }
         }
     }
@@ -123,9 +130,9 @@ class Route {
 
     private function get_schedule_url( $timestamp ) {
         if ( $this->is_same_day( $timestamp ) ) {
-            return BC_FERRY_URL . '/routes-fares/schedules/' . $this->route_slug ; 
+            return BC_FERRY_URL . '/routes-fares/schedules/daily/' . $this->route_slug ; 
         }
-        return BC_FERRY_URL . '/routes-fares/schedules/' . $this->route_slug . '?scheduleDate=' . $this->_date( 'm/d/Y', $timestamp, BC_TIMEZONE );      
+        return BC_FERRY_URL . '/routes-fares/schedules/daily/' . $this->route_slug . '?scheduleDate=' . $this->_date( 'm/d/Y', $timestamp, BC_TIMEZONE );      
     }
     /**
      * Figures out if the current url exists. 
@@ -173,13 +180,20 @@ class Route {
         }
         $next_departure_times = [];
         foreach ( $schedules_data as $row  ) {
+            $cleanCol = trim( $row[0] );
             // the first column of the row is probably what we want in this case.
-            if ( $this->starts_with_number( $row[0] ) ) {
+            if ( $this->starts_with_number( $cleanCol ) ) {
+                if ( $pos = strpos( $cleanCol, 'Queen of Capilano' ) ) {
+                    $cleanCol = trim( substr( $cleanCol, 0, $pos ) );
+                }
                 // Current data array contains tomorrows departure times.
-                if ( $pos = strpos( $row[0], '(Tomorrow)' ) ) {
-                    $departure_time = $this->str_to_date_object( trim( substr( $row[0], 0, $pos ) ), $this->_date( DATE_FORMAT, time() + DAY_IN_SECONDS, BC_TIMEZONE ) );
+                if ( $pos = strpos( $cleanCol, '(Tomorrow)' ) ) {
+                    $departure_time = $this->str_to_date_object( trim( substr( $cleanCol, 0, $pos ) ), $this->_date( DATE_FORMAT, time() + DAY_IN_SECONDS, BC_TIMEZONE ) );
                 } else {
-                    $departure_time = $this->str_to_date_object( $row[0], $date );
+                    $departure_time = $this->str_to_date_object( $cleanCol, $date );
+                }
+                if (! $departure_time) {
+                    continue;
                 }
                 
                 if ( $timestamp >= $departure_time->format( 'U' ) && $this->is_same_day( $timestamp )) {
@@ -218,10 +232,13 @@ class Route {
         if ( isset( $this->in_memory_cache[ $url ] ) ) { 
             // We could be more aggressive here since the scheduled data doesn't change that often
             // but the current data changes every minute. 
+            #print "Hit HTML cache with url [" . $url . "]... returning cached result.\n";
             return $this->in_memory_cache[ $url ];
         }
+        #print "Fetching page from " . $url . "...\n";
 
-        $tableData = \Cache::get( $url, $this->get_expiry_time( $timestamp ) );
+        //$tableData = \Cache::get( $url, $this->get_expiry_time( $timestamp ) );
+        $tableData = false;
         if ( $tableData ) {
             $this->in_memory_cache[ $url ] = $tableData;
             return $tableData;
@@ -255,7 +272,7 @@ class Route {
         }
 
         $this->in_memory_cache[ $url ] = $tableData;
-        \Cache::set( $url, $tableData );
+        //\Cache::set( $url, $tableData );
 
         return $tableData;
     }
@@ -290,7 +307,7 @@ class Route {
      *  '90% Available' => '0.90'
      */
     private function format_percentage( $percentage_string ) {
-        return '0.' . \str_replace( '% Available', '', $percentage_string ); 
+        return '0.' . \str_replace( '%', '', $percentage_string ); 
     }
 
 }

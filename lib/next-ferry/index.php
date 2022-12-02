@@ -15,7 +15,8 @@ function get_routes() {
         'id' => 'bowen-vancouver',
         'to' => 'Vancouver, Hourseshoe Bay',
         'from' => 'Bowen island, Snug Cove', 
-        'slug' => 'bowen-island-snug-cove-vancouver-horseshoe-bay/BOW-HSB',
+        //'slug' => 'bowen-island-snug-cove-vancouver-horseshoe-bay/BOW-HSB',
+        'slug' => 'BOW-HSB',
         'current' => false,
         'map' => 'route5',
     ] );
@@ -24,7 +25,8 @@ function get_routes() {
         'id' => 'vancouver-bowen',
         'to' => 'Bowen island, Snug Cove', 
         'from' => 'Vancouver, Hourseshoe Bay',
-        'slug' => 'vancouver-horseshoe-bay-bowen-island-snug-cove/HSB-BOW',
+        //'slug' => 'vancouver-horseshoe-bay-bowen-island-snug-cove/HSB-BOW',
+        'slug' => 'HSB-BOW',
         'current' => true,
         'map' => 'route5',
     ] );
